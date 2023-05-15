@@ -24,7 +24,6 @@ Utility.type("ciel") |> IO.puts()
 Utility.type(0) |> IO.puts()
 # out: integer
 
-
 # Implementing size for different types
 
 defprotocol Size do
@@ -69,29 +68,33 @@ defmodule OtherCat do
   defstruct [:name, :age]
 end
 
-# Usage
+defmodule Main do
+  def start do
+    Size.size("ciel") |> IO.puts()
+    # out: 4
+    Size.size(%{name: "ciel"}) |> IO.puts()
+    # out: 1
+    Size.size({"ciel", "alice"}) |> IO.puts()
+    # out: 2
+    Size.size(["ciel", "alice"]) |> IO.puts()
+    # out: 2
+    Size.size(%OtherCat{name: "alice", age: 3}) |> IO.puts()
+    # out: 2
 
-Size.size("ciel") |> IO.puts()
-# out: 4
-Size.size(%{name: "ciel"}) |> IO.puts()
-# out: 1
-Size.size({"ciel", "alice"}) |> IO.puts()
-# out: 2
-Size.size(["ciel", "alice"]) |> IO.puts()
-# out: 2
-Size.size(%OtherCat{name: "alice", age: 3}) |> IO.puts()
-# out: 2
+    # Built-in protocols:
 
-# Built-in protocols:
+    # Enum implements the Enumerable protocol
+    Enum.map([1, 2, 3], fn x -> x * 2 end) |> IO.inspect()
+    # out: [2, 4, 6]
 
-# Enum implements the Enumerable protocol
-Enum.map([1, 2, 3], fn x -> x * 2 end) |> IO.inspect()
-[2, 4, 6]
+    # String.Chars protocol, exposed via to_string function
+    to_string(:ciel) |> IO.puts()
+    # out: "ciel"
 
-# String.Chars protocol, exposed via to_string function
-to_string(:ciel)
-# out: "ciel"
+    # String interpolation calls to_string
+    "num: #{0}" |> IO.puts()
+    # out: "num: 0"
+  end
+end
 
-# String interpolation calls to_string
-"num: #{:0}"
-# out: "num: 0"
+Main.start()
