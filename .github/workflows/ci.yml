@@ -8,6 +8,7 @@ on:
 jobs:
   dialyxir:
     name: dialyxir
+    runs-on: ubuntu-latest
     steps:
       - name: Check out source
         uses: actions/checkout@v2
@@ -16,11 +17,11 @@ jobs:
         id: beam
         uses: erlef/setup-beam@v1
         with:
-          elixir-version: "1.12.3" # Define the Elixir version
-          otp-version: "24.1" # Define the OTP version
+          elixir-version: "1.12.3"
+          otp-version: "24.1"
 
-        # Don't cache PLTs based on mix.lock hash, as Dialyzer can incrementally update even old ones
-        # Cache key based on Elixir & Erlang version (also useful when running in matrix)
+      # Don't cache PLTs based on mix.lock hash, as Dialyzer can incrementally update even old ones
+      # Cache key based on Elixir & Erlang version (also useful when running in matrix)
       - name: Restore PLT cache
         id: plt_cache
         uses: actions/cache/restore@v3
