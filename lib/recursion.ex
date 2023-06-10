@@ -16,13 +16,13 @@ defmodule Math do
   end
 end
 
-IO.puts(Math.sum([1, 2, 3], 0))
+Math.sum([1, 2, 3], 0) |> IO.puts()
 # out: 6
 Math.double([1, 2, 3])
 # out: [2, 4, 6]
 
 # capture syntax with enumerables
-IO.puts(Enum.reduce([1, 2, 3], 0, &+/2))
+Enum.reduce([1, 2, 3], 0, &+/2) |> IO.puts()
 # out: 6
 Enum.map([1, 2, 3], &(&1 * 3))
 # out: [3, 6, 9]

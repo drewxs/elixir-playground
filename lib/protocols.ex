@@ -3,8 +3,8 @@
 #   def type(value) when is_integer(value), do: "integer"
 # end
 
-# Protocols are kinda like Rust traits
-# Implement the protocol for a type
+# protocols are kinda like Rust traits
+# implement the protocol for a type
 
 defprotocol Utility do
   @spec type(t) :: String.t()
@@ -24,7 +24,7 @@ Utility.type("ciel") |> IO.puts()
 Utility.type(0) |> IO.puts()
 # out: integer
 
-# Implementing size for different types
+# implementing size for different types
 
 defprotocol Size do
   @fallback_to_any true
@@ -52,6 +52,7 @@ defimpl Size, for: MapSet do
 end
 
 defmodule Cat do
+  @moduledoc "cat"
   defstruct [:name, :age]
 end
 
@@ -64,11 +65,13 @@ defimpl Size, for: Any do
 end
 
 defmodule OtherCat do
+  @moduledoc "other cat"
   @derive [Size]
   defstruct [:name, :age]
 end
 
 defmodule Main do
+  @moduledoc "main"
   def start do
     Size.size("ciel") |> IO.puts()
     # out: 4

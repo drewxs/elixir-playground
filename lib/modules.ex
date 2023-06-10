@@ -5,9 +5,9 @@ defmodule Adder do
   end
 end
 
-IO.puts(Adder.add(3))
+Adder.add(3) |> IO.puts()
 # out: 4
-IO.puts(Adder.add())
+Adder.add() |> IO.puts()
 # out: 2
 
 # default values with multiple clauses
@@ -23,9 +23,9 @@ defmodule Concat do
   end
 end
 
-IO.puts(Concat.join("ciel", "alice"))
+Concat.join("ciel", "alice") |> IO.puts()
 # out: ciel alice
-IO.puts(Concat.join("ciel", "alice", "_"))
+Concat.join("ciel", "alice", "_") |> IO.puts()
 # out: ciel_alice
-IO.puts(Concat.join("ciel"))
+Concat.join("ciel") |> IO.puts()
 # out: ciel

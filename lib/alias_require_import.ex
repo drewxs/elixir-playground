@@ -1,4 +1,4 @@
-# alias
+# ALIAS
 # lexically scoped
 
 # alias Math.List, as: List
@@ -6,46 +6,47 @@
 # ^ both are equivalent
 
 defmodule Stats do
-  def plus(a, b) do
+  def plus(_a, _b) do
     alias Math.List
+    List
   end
 
-  def minus(a, b) do
+  def minus(_a, _b) do
     # List is not available here
   end
 end
 
-# Aliases are converted to atoms at compile time
-# Since Erlang modules are always represented as atoms
+# aliases are converted to atoms at compile time
+# since Erlang modules are always represented as atoms
 # List and :"Elixir.List" are equivalent
 
-# require
+# REQUIRE
 
-# Allow module macro usage
+# allow module macro usage
 # lexically scoped
 
 # Integer.is_odd(7)
 # error: undefined or private
 
 require Integer
-Integer.is_odd(7)
+Integer.is_odd(7) |> IO.puts()
 # out: true
 
-# import
+# IMPORT
 
-# Import all functions from Foo, allowing them to be called without the module prefix
-# Note: prefer alias over import, as it is more explicit
+# import all functions from Foo, allowing them to be called without the module prefix
+# note: prefer alias over import, as it is more explicit
 # lexically scoped
 
 import List, only: [duplicate: 2]
 duplicate(:ok, 3) |> IO.inspect()
 # out: [:ok, :ok, :ok]
 
-# use
+# USE
 
-# Invoke code defined in module
+# invoke code defined in module
 
-# Example: writing tests using ExUnit
+# example: writing tests using ExUnit
 # defmodule Test do
 #   use ExUnit.Case, async: true
 #
@@ -64,9 +65,9 @@ duplicate(:ok, 3) |> IO.inspect()
 #  Feature.__using__(option: :value)
 # end
 
-# Module nesting
+# MODULE NESTING
 
-# Nested module are intependent so they can be defined in any order
+# nested module are intependent so they can be defined in any order
 defmodule Foo.Bar do
   defmodule Baz do
   end
@@ -74,11 +75,12 @@ end
 
 defmodule Foo do
   alias Foo.Bar.Baz
+  Baz
   # Calling Baz here is fine
   # Bar is not available
 end
 
-# Multi aliaes
+# multi aliaes
 defmodule App do
   defmodule Foo do
   end
@@ -91,3 +93,5 @@ defmodule App do
 end
 
 alias App.{Foo, Bar, Baz}
+Foo
+Bar

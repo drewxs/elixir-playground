@@ -1,11 +1,9 @@
 pid = spawn(fn -> 1 + 2 end)
 # PID<0.x.0>
-x = Process.alive?(pid)
-IO.puts(x)
+Process.alive?(pid) |> IO.puts()
 
 # retrieve current process pid
-x = Process.alive?(self())
-IO.puts(x)
+Process.alive?(self()) |> IO.puts()
 
 # send message to process
 send(self(), {:ciel, "alice"})

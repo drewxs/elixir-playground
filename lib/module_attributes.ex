@@ -12,7 +12,7 @@ defmodule Cat do
   @doc """
   Meows.
   """
-  def meow(), do: "meow"
+  def meow, do: "meow"
 end
 
 # $ elixirc lib/module_attributes.ex
