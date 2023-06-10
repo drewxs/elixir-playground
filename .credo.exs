@@ -3,16 +3,17 @@
     %{
       name: "default",
       files: %{
-        included: ["lib/", "src/", "web/", "apps/"],
+        included: ["lib/", "src/"],
         excluded: []
       },
       plugins: [],
       requires: [],
-      strict: false,
+      strict: true,
       parse_timeout: 5000,
       color: true,
       checks: [
-        {Credo.Check.Warning.IoInspect, false}
+        {Credo.Check.Warning.IoInspect, false},
+        {Credo.Check.Readability.ModuleDoc, false}
       ]
     }
   ]
