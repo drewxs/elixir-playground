@@ -5,7 +5,7 @@ defmodule Cat do
   defstruct name: "Ciel", age: 3
 end
 
-defmodule Main do
+defmodule Structs do
   %Cat{} |> IO.inspect()
   # out: %Cat{name: "Ciel", age: 3}
   %Cat{name: "Alice", age: 2} |> IO.inspect()
@@ -32,7 +32,7 @@ defmodule Kitten do
   defstruct [:breed, :name, age: 3]
 end
 
-defmodule Main2 do
+defmodule Structs2 do
   %Kitten{name: "Alice"} |> IO.inspect()
   # out: %Kitten{breed: nil, name: "Alice", age: 3}
 end

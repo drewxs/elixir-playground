@@ -1,10 +1,10 @@
-defmodule Cat do
+defmodule Cat2 do
   @moduledoc """
   Meow?
 
   ## Examples
 
-      iex> Cat.meow()
+      iex> Cat2.meow()
       "meow"
 
   """
@@ -17,8 +17,8 @@ end
 
 # $ elixirc lib/module_attributes.ex
 # $ iex
-# iex> h Cat # Access the docs for the module Cat
-# iex> h Cat.meow # Access the docs for the meow function
+# iex> h Cat2 # Access the docs for the module Cat2
+# iex> h Cat2.meow # Access the docs for the meow function
 
 # ExDoc can generate HTML from docs.math
 # Attributes are also used to define typespecs
@@ -39,6 +39,8 @@ defmodule Server do
   # Don't use for runtime evaluation
   defmodule Status do
     @service URI.parse("https://example.com")
+    IO.puts(@service)
+
     def status(_email) do
       # SomeHttpClient.get(@service)
     end

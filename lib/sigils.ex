@@ -61,13 +61,13 @@ sigil_r(<<"foo">>, 'i') |> IO.inspect()
 ~r"foo"i |> IO.inspect()
 # out: ~r/foo/i
 
-defmodule Sigils do
+defmodule SigilI do
   def sigil_i(string, []), do: String.to_integer(string)
   def sigil_i(string, [?n]), do: -String.to_integer(string)
 end
 
-defmodule Main do
-  import Sigils
+defmodule Sigils do
+  import SigilI
 
   ~i(7) |> IO.inspect()
   # out: 7

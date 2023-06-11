@@ -1,10 +1,10 @@
-defmodule Math do
+defmodule Zero do
   def zero?(0), do: true
   def zero?(x) when is_integer(x), do: false
 end
 
 # retrieve named functions as function types
-fun = &Math.zero?/1
+fun = &Zero.zero?/1
 is_function(fun) |> IO.puts()
 fun.(0) |> IO.puts()
 # out: true

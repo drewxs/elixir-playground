@@ -70,7 +70,7 @@ defmodule OtherCat do
   defstruct [:name, :age]
 end
 
-defmodule Main do
+defmodule Protocols do
   @moduledoc "main"
   def start do
     Size.size("ciel") |> IO.puts()
@@ -100,4 +100,4 @@ defmodule Main do
   end
 end
 
-Main.start()
+Protocols.start()
