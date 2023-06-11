@@ -17,11 +17,10 @@ for n <- 0..5, rem(n, 3) == 0, do: n
 # out: 0 3
 
 # multiple generators/filters
-dirs = ['/home/drew/code', '/home/drew/.dotfiles']
-
-for dir <- dirs, file <- File.ls!(dir), path = Path.join(dir, file), File.regular?(path) do
-  File.stat!(path).size |> IO.puts()
-end
+# dirs = ['/home/drew/code', '/home/drew/.dotfiles']
+# for dir <- dirs, file <- File.ls!(dir), path = Path.join(dir, file), File.regular?(path) do
+#   File.stat!(path).size |> IO.puts()
+# end
 
 # for i <- [:a, :b, :c], j <- [1, 2], do: {i, j} |> IO.inspect()
 # out: [{:a, 1}, {:a, 2}, {:b, 1}, {:b, 2}, {:c, 1}, {:c, 2}]
