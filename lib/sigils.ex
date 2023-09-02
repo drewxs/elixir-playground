@@ -57,16 +57,16 @@ name = "ciel"
 
 # CUSTOM SIGILS
 
-sigil_r(<<"foo">>, 'i') |> IO.inspect()
 ~r"foo"i |> IO.inspect()
 # out: ~r/foo/i
+# same as: sigil_r(<<"foo">>, ~c"i") |> IO.inspect()
 
 defmodule SigilI do
   def sigil_i(string, []), do: String.to_integer(string)
   def sigil_i(string, [?n]), do: -String.to_integer(string)
 end
 
-defmodule Sigils do
+defmodule CustomSigils do
   import SigilI
 
   ~i(7) |> IO.inspect()
