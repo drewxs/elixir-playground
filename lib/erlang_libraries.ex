@@ -41,7 +41,7 @@ table = :ets.new(:ets_test, [])
 :ets.insert(table, {"China", 1_374_000_000})
 :ets.insert(table, {"India", 1_284_000_000})
 :ets.insert(table, {"USA", 322_000_000})
-:ets.i(table)
+# :ets.i(table)
 # out: <1   > {<<"India">>,1284000000}
 # out: <2   > {<<"USA">>,322000000}
 # out: <3   > {<<"China">>,1374000000}
@@ -49,11 +49,11 @@ table = :ets.new(:ets_test, [])
 # MATH
 
 angle_45_deg = :math.pi() * 45.0 / 180.0
-:math.sin(angle_45_deg)
+:math.sin(angle_45_deg) |> IO.puts()
 # out: 0.7071067811865475
-:math.exp(55.0)
+:math.exp(55.0) |> IO.puts()
 # out: 7.694785265142018e23
-:math.log(7.694_785_265_142_018e23)
+:math.log(7.694_785_265_142_018e23) |> IO.puts()
 # out: 55.0
 
 # QUEUE
@@ -61,14 +61,14 @@ angle_45_deg = :math.pi() * 45.0 / 180.0
 q = :queue.new()
 q = :queue.in("A", q)
 q = :queue.in("B", q)
-{value, q} = :queue.out(q)
-value
+{value, _} = :queue.out(q)
+value |> IO.inspect()
 # out: {:value, "A"}
-{value, q} = :queue.out(q)
-value
+{value, _} = :queue.out(q)
+value |> IO.inspect()
 # out: {:value, "B"}
-{value, q} = :queue.out(q)
-value
+{value, _} = :queue.out(q)
+value |> IO.inspect()
 # out: :empty
 
 # RAND
@@ -92,12 +92,12 @@ His fleece was white as snow,
 And everywhere that Mary went,
 The lamb was sure to go."
 compressed = :zlib.compress(song)
-byte_size(song)
+_ = byte_size(song)
 # out:
 # <<120, 156, 37, 140, 187, 13, 195, 48, 12, 5, 123, 77, 241, 6, 16, 188, 67, 186,
 #   52, 233, 188, 0, 109, 189, 132, 2, 100, 9, 144, 152, 16, 222, 62, 254, 116,
 #   87, 220, 93, 120, 73, 223, 161, 146, 32, 40, 217, 172, 16, 69, 182, ...>>
-byte_size(compressed)
+_ = byte_size(compressed)
 # out: 99
 :zlib.uncompress(compressed)
 # out: "\nMary had a little lamb,\nHis fleece was white as snow,
