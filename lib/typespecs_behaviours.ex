@@ -103,11 +103,8 @@ defmodule UsingBehaviours do
   end
 
   defp parse_extension(filename) do
-    if ext = Path.extname(filename) do
-      {:ok, ext}
-    else
-      {:error, :no_extension}
-    end
+    ext = Path.extname(filename)
+    {:ok, ext}
   end
 
   defp find_parser(ext, parsers) do
